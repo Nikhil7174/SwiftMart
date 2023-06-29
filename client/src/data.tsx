@@ -1,52 +1,80 @@
 import { Product } from "./types/Products";
+import { Category } from "./types/Products";
+import { popularProduct } from "./types/Products";
 
-export const sampleProducts: Product[] = [
+export const sliderItems: Product[] = [
   {
-    name: "Nike Slim shirt",
-    slug: "nike-slim-shirt",
-    category: "Shirts",
-    image: "../public/p1.png",
-    price: 120,
-    countInStock: 10,
-    brand: "Nike",
-    rating: 4.5,
-    numReviews: 10,
-    description: "high quality shirt",
+    id: 1,
+    img: "https://images.unsplash.com/photo-1518424135398-79ffcc6a2d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1885&q=80",
+    title: "SUMMER SALE",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    bg: "f5fafd",
   },
   {
-    name: "Adidas Fit Shirt",
-    slug: "adidas-fit-shirt",
-    category: "Shirts",
-    image: "../public/p2.png",
-    price: 100,
-    countInStock: 20,
-    brand: "Adidas",
-    rating: 4.0,
-    numReviews: 10,
-    description: "high quality product",
+    id: 2,
+    img: "https://i.ibb.co/DG69bQ4/2.png",
+    title: "AUTUMN COLLECTION",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    bg: "fcf1ed",
   },
   {
-    name: "Lacoste Free Pants",
-    slug: "lacoste-free-pants",
-    category: "Pants",
-    image: "../public/p3.png",
-    price: 220,
-    countInStock: 0,
-    brand: "Lacoste",
-    rating: 4.8,
-    numReviews: 17,
-    description: "high quality product",
+    id: 3,
+    img: "https://i.ibb.co/cXFnLLV/3.png",
+    title: "LOUNGEWEAR LOVE",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    bg: "fbf0f4",
+  },
+];
+
+export const categories: Category[] = [
+  {
+    id: 1,
+    img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    title: "SHIRT STYLE!",
   },
   {
-    name: "Nike Slim Pant",
-    slug: "nike-slim-pant",
-    category: "Pants",
-    image: "../public/p4.png",
-    price: 78,
-    countInStock: 15,
-    brand: "Nike",
-    rating: 4.5,
-    numReviews: 14,
-    description: "high quality product",
+    id: 2,
+    img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    title: "LOUNGEWEAR LOVE",
+  },
+  {
+    id: 3,
+    img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    title: "LIGHT JACKETS",
+  },
+];
+
+export const popularProducts: popularProduct[] = [
+  {
+    id: 1,
+    img: "https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
+  },
+  {
+    id: 2,
+    img: "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+  },
+  {
+    id: 3,
+    img: "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
+  },
+  {
+    id: 4,
+    img: "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
+  },
+  {
+    id: 5,
+    img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+  },
+  {
+    id: 6,
+    img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+  },
+  {
+    id: 7,
+    img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+  },
+  {
+    id: 8,
+    img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
   },
 ];

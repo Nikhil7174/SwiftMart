@@ -1,12 +1,18 @@
 export type Product = {
-    name: string
-    slug: string
-    image: string
-    category: string
-    brand: string
-    price: number
-    countInStock: number
-    description: string
-    rating: number
-    numReviews: number
+    id: number,
+    img: string,
+    title: string,
+    desc: string,
+    bg: string,
+}
+
+export type Category = {
+    id: number,
+    img: string,
+    title: string,
+}
+
+export type popularProduct = {
+    id: number,
+    img: string,
 }
