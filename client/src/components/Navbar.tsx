@@ -84,8 +84,15 @@ function Navbar(): JSX.Element {
           <Logo>SwiftMart.</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link
+            style={{ color: "black", textDecoration: "none" }}
+            to="/register"
+          >
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link style={{ color: "black", textDecoration: "none" }} to="/signin">
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={"23"} color="primary" overlap="rectangular">

@@ -11,12 +11,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import "./index.css";
 import Home from "./pages/Home";
-import ProductPage from "./pages/Product";
+import Product from "./pages/Product";
 import axios from "axios";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
@@ -25,11 +28,11 @@ axios.defaults.baseURL =
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} element={<Home />} />
-      <Route path="product/:slug" element={<ProductPage />} />
-      {/* <Route path="dashboard" element={<Dashboard />} /> */}
-      {/* ... etc. */}
+    <Route>
+      <Route path="/" element={<Home />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Route>
   )
 );

@@ -5,14 +5,14 @@ import { popularProduct } from "./types/Products";
 export const sliderItems: Product[] = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1518424135398-79ffcc6a2d6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1885&q=80",
+    img: "https://images.pexels.com/photos/16585669/pexels-photo-16585669/free-photo-of-young-man-in-a-hat-standing-next-to-a-wall.jpeg",
     title: "SUMMER SALE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "f5fafd",
   },
   {
     id: 2,
-    img: "https://i.ibb.co/DG69bQ4/2.png",
+    img: "https://i.ibb.co/LQ1MV51/My-project-1.png",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
@@ -51,7 +51,7 @@ export const popularProducts: popularProduct[] = [
   },
   {
     id: 2,
-    img: "https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+    img: "https://i.ibb.co/DzdWNcs/My-project-1-2.png",
   },
   {
     id: 3,
@@ -59,7 +59,7 @@ export const popularProducts: popularProduct[] = [
   },
   {
     id: 4,
-    img: "https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
+    img: "https://i.ibb.co/nst2xx5/My-project-1-5.png",
   },
   {
     id: 5,
@@ -71,7 +71,7 @@ export const popularProducts: popularProduct[] = [
   },
   {
     id: 7,
-    img: "https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+    img: "https://i.ibb.co/z54xQKb/My-project-1-6.png",
   },
   {
     id: 8,
