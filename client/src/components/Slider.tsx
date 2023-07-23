@@ -6,8 +6,9 @@ import { sliderItems } from "../data";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
+  margin-bottom:20px;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -34,7 +35,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 70%;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -42,7 +43,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
@@ -54,7 +55,7 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 100%;
   width: 90%;
 `;
 
