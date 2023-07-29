@@ -1,20 +1,29 @@
-import express, { Request, Response } from "express";
-import { sampleProducts } from "./data";
+import express, { Application } from "express";
+import bodyParser from "body-parser";
 import cors from "cors"
-import userRoute from "../routes/user"
+import authRoute from "../routes/auth"
 
-const app = express()
-app.get('/api/products', (req: Request, res: Response) => {
-    res.json(sampleProducts)
-})
+import mongoose from "mongoose";
+import * as dotenv from "dotenv"
 
-const PORT = 5000
+dotenv.config();
 
-app.use(cors())
-app.use(express.json())
+const app: Application = express();
+app.use(bodyParser.json({ limit: "30mb" }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
-app.use("/api/user",userRoute)
+app.use(cors());
+app.use(express.json());
+app.use("/api/auth", authRoute);
+// app.use("/api/users", userRoute);
+// app.use("/api/products", productRoute);
+// app.use("/api/carts", cartRoute);
+// app.use("/api/orders", orderRoute);
+// app.use("/api/checkout", stripeRoute);
 
-app.listen(PORT, () => {
-    console.log(`server started at http://localhost:${PORT}`)
-})
+const CONNECTION_URL: string = process.env.MONGO_URL || ""
+
+const PORT: number | string = process.env.PORT || 5000
+mongoose.connect(CONNECTION_URL,)
+    .then(() => app.listen(PORT, () => console.log(`Server running on port:${PORT}`)))
+    .catch((error) => console.log("some error", error))
