@@ -6,7 +6,7 @@ import * as dotenv from "dotenv"
 
 dotenv.config();
 
-const PASS_SEC = process.env.PASS_SEC||""
+const PASS_SEC = process.env.PASS_SEC || ""
 export const register = async (req:Request, res:Response) => {
     const newUser = new User({
       username: req.body.username,

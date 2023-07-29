@@ -4,7 +4,7 @@ import User from  "../models/User"
 import CryptoJS from "crypto-js";
 import  jwt  from "jsonwebtoken";
 import * as dotenv from "dotenv"
-import { login, register } from "../controllers/user";
+import { login, register } from "../controllers/auth";
 
 dotenv.config();
 
