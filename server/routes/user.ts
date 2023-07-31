@@ -1,8 +1,9 @@
 import { deleteUser, getAllUser, getUser, getUserStats, updateUser } from "../controllers/user";
 
 import { verifyToken, verifyTokenAndAdmin, verifyTokenAndAuthorization } from "../middleware/auth";
+import express, { Router } from "express";
 
-const router = require("express").Router();
+const router: Router = express.Router()
 
 //UPDATE
 router.put("/:id", verifyTokenAndAuthorization, updateUser);

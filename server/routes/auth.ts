@@ -1,8 +1,4 @@
-import express, { Router, Request,Response } from "express";
-
-import User from  "../models/User"
-import CryptoJS from "crypto-js";
-import  jwt  from "jsonwebtoken";
+import express, { Router } from "express";
 import * as dotenv from "dotenv"
 import { login, register } from "../controllers/auth";
 
