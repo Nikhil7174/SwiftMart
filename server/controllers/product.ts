@@ -45,12 +45,38 @@ export const getProduct = async (req:Request, res:Response) => {
     }
   }
 
-  export const getAllProducts = async (req:Request, res:Response) => {
+export const getAllProducts = async (req:Request, res:Response) => {
     const qNew = req.query.new;
     const qCategory = req.query.category;
+    const qMaxToMin = req.query.maxToMin;
+    const qMinToMax = req.query.minToMax;
     try {
       let products;
-  
+      
+      if (qMaxToMin) {
+        products = await Product.find().sort({ price: -1 });
+      } else if (qCategory) {
+        products = await Product.find({
+          categories: {
+            $in: [qCategory],
+          },
+        });
+      } else {
+        products = await Product.find();
+      }
+
+      if (qMinToMax) {
+        products = await Product.find().sort({ price: 1 });
+      } else if (qCategory) {
+        products = await Product.find({
+          categories: {
+            $in: [qCategory],
+          },
+        });
+      } else {
+        products = await Product.find();
+      }
+
       if (qNew) {
         products = await Product.find().sort({ createdAt: -1 }).limit(1);
       } else if (qCategory) {

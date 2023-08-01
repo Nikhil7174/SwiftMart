@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors"
 import authRoute from "../routes/auth"
 import userRoute from "../routes/user"
+import productRoute from '../routes/product'
 import mongoose from "mongoose";
 import * as dotenv from "dotenv"
 
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-// app.use("/api/products", productRoute);
+app.use("/api/products", productRoute);
 // app.use("/api/carts", cartRoute);
 // app.use("/api/orders", orderRoute);
 // app.use("/api/checkout", stripeRoute);
