@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductType = {
     id: number,
     img: string,
     title: string,
@@ -10,6 +10,7 @@ export type Category = {
     id: number,
     img: string,
     title: string,
+    cat:string,
 }
 
 export type popularProduct = {
