@@ -5,9 +5,10 @@ interface IProduct extends Document {
   desc: string;
   img: string;
   categories: string[];
-  size?: string;
-  color?: string;
+  size?: string[];
+  color?: string[];
   price: number;
+  inStock:boolean;
 }
 
 const ProductSchema: Schema<IProduct> = new mongoose.Schema(
@@ -16,9 +17,10 @@ const ProductSchema: Schema<IProduct> = new mongoose.Schema(
     desc: { type: String, required: true },
     img: { type: String, required: true },
     categories: { type: [String] },
-    size: { type: String },
-    color: { type: String },
+    size: { type: [String] },
+    color: { type: [String] },
     price: { type: Number, required: true },
+    inStock: {type: Boolean}
   },
   { timestamps: true }
 )
