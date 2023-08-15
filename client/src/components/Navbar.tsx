@@ -1,6 +1,5 @@
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import React, { JSXElementConstructor } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
@@ -68,8 +67,8 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-function Navbar(): JSX.Element {
-  //   const quantity = useSelector((state) => state.cart.quantity);
+const Navbar = () => {
+  const quantity = useSelector((state:any)=>state.cart.quantity)
   return (
     <Container>
       <Wrapper>
@@ -81,29 +80,22 @@ function Navbar(): JSX.Element {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>SwiftMart.</Logo>
+          <Logo>LAMA.</Logo>
         </Center>
         <Right>
-          <Link
-            style={{ color: "black", textDecoration: "none" }}
-            to="/register"
-          >
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link style={{ color: "black", textDecoration: "none" }} to="/signin">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
+          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>SIGN IN</MenuItem>
           <Link to="/cart">
-            <MenuItem>
-              <Badge badgeContent={"23"} color="primary" overlap="rectangular">
-                <ShoppingCartOutlined />
-              </Badge>
-            </MenuItem>
+          <MenuItem>
+            <Badge badgeContent={quantity} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </MenuItem>
           </Link>
         </Right>
       </Wrapper>
     </Container>
   );
-}
+};
 
 export default Navbar;
