@@ -2,8 +2,10 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/apiCalls";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -68,7 +70,16 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  const dispatch:any = useDispatch();
   const quantity = useSelector((state:any)=>state.cart.quantity)
+  const user:any = useSelector((state:any) => state.user.currentUser);
+  const navigate = useNavigate();
+
+  const handleLogout = (e:any) => {
+    e.preventDefault();
+    dispatch(logout);
+    navigate('/');      
+  };
   return (
     <Container>
       <Wrapper>
@@ -80,12 +91,13 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+        <Link to="/" style={{textDecoration:"none",color:"black"}}><Logo>SwiftMart.</Logo></Link>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <Link to="/cart">
+          {!user?(<><Link to="/register" style={{textDecoration:"none",color:"black"}}><MenuItem>REGISTER</MenuItem></Link>
+        <Link to="/login" style={{textDecoration:"none",color:"black"}}><MenuItem>SIGN IN</MenuItem></Link></>):(<><MenuItem onClick={handleLogout}>LOGOUT</MenuItem></>)}
+        
+          <Link to="/cart" style={{textDecoration:"none",color:"black"}}>
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlined />
