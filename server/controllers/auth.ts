@@ -9,6 +9,7 @@ dotenv.config();
 const PASS_SEC = process.env.PASS_SEC || ""
 export const register = async (req:Request, res:Response) => {
     const newUser = new User({
+      fullname:req.body.fullname,
       username: req.body.username,
       email: req.body.email,
       password: CryptoJS.AES.encrypt(
