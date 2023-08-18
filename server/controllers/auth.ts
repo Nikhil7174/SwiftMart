@@ -19,9 +19,9 @@ export const register = async (req:Request, res:Response) => {
   
     try {
       const savedUser = await newUser.save();
-      res.status(201).json(savedUser);
+      return res.status(201).json(savedUser);
     } catch (err) {
-      res.status(500).json(err);
+      return res.status(500).json(err);
     }
   }
 
@@ -33,7 +33,9 @@ export const register = async (req:Request, res:Response) => {
             }
         );
         
-        !user && res.status(401).json("Wrong User Name");
+          if(!user){
+            return res.status(401).json("Wrong User Name");
+          }
 
         const hashedPassword = CryptoJS.AES.decrypt(
             user.password,
@@ -45,8 +47,10 @@ export const register = async (req:Request, res:Response) => {
 
         const inputPassword = req.body.password;
         
-        originalPassword != inputPassword && 
-            res.status(401).json("Wrong Password");
+        if(originalPassword != inputPassword){
+          return res.status(401).json("Wrong Password");
+        }
+            
 
         const JWT_SEC = process.env.JWT_SEC || ""
         const accessToken = jwt.sign(

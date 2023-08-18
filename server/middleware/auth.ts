@@ -7,7 +7,7 @@ export const verifyToken = (req:any, res:Response, next:any) => {
   if (authHeader) {
     const token = authHeader.split(" ")[1];
     jwt.verify(token, JWT_SEC, (err:any, user:any) => {
-      if (err) res.status(403).json("Token is not valid!");
+      if (err) return res.status(403).json("Token is not valid!");
       req.user = user;
       next();
     });
