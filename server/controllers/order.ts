@@ -3,7 +3,6 @@ import { Request,Response } from "express";
 
 export const createOrder = async (req:Request, res:any) => {
     const newOrder = new Order(req.body);
-    console.log("sdfghjk")
     try {
         
       const savedOrder = await newOrder.save();

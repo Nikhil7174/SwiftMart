@@ -6,6 +6,7 @@ import userRoute from "../routes/user"
 import productRoute from '../routes/product'
 import cartRoute from '../routes/cart'
 import orderRoute from '../routes/order'
+import stripeRoute from '../routes/stripe'
 import mongoose from "mongoose";
 import * as dotenv from "dotenv"
 
@@ -22,7 +23,7 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
-// app.use("/api/checkout", stripeRoute);
+app.use("/api/checkout", stripeRoute);
 
 const CONNECTION_URL: string = process.env.MONGO_URL || ""
 

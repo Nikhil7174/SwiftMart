@@ -59,10 +59,10 @@ export const register = async (req:Request, res:Response) => {
         );
   
         const { password, ...others } = user._doc;  
-        res.status(200).json({...others, accessToken});
+        return res.status(200).json({...others, accessToken});
 
     }catch(err){
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 
 }
