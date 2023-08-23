@@ -5,28 +5,67 @@ interface CartProduct {
 }
 
 interface CartState {
-  products: CartProduct[];
+  userId: string;
+  products: string[];
   quantity: number;
   total: number;
+  isFetching:boolean;
 }
 
 const initialState: CartState = {
+  userId:"",
   products: [],
   quantity: 0,
   total: 0,
+  isFetching: false,
+  error: false,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<any>) => {
+    addProduct: (state, action) => {
       state.quantity += 1;
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.quantity;
     },
+    // createCart: (state, action: PayloadAction<any>) => {
+    //   console.log(action.payload)
+    //   console.log(state.products)
+    //   console.log(state)
+    //   state.userId = action.payload.userId;
+    //   state.quantity += 1;
+    //   state.products.push(action.payload);
+    //   state.total += action.payload.price * action.payload.quantity;
+    //   console.log(state.userId)
+    // },
+    createCart: (state, action: PayloadAction<any>) => {
+      const newProduct = action.payload;
+      const newTotal = state.total + newProduct.price * newProduct.quantity;
+    
+      return {
+        ...state,
+        userId: newProduct.userId,
+        quantity: state.quantity + 1,
+        products: [...state.products, newProduct],
+        total: newTotal,
+      };
+    },
+    addProductStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    addProductSuccess: (state, action) => {
+      state.isFetching = false;
+      state.products.push(action.payload);
+    },
+    addProductFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
-export const { addProduct } = cartSlice.actions;
+export const { addProduct, createCart, addProductStart, addProductSuccess, addProductFailure } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -3,7 +3,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/apiCalls";
+import { logout } from "../redux/authApiCalls";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

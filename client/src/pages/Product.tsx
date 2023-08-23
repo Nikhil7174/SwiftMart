@@ -9,8 +9,9 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../apiRequest/index";
-import { addProduct } from "../redux/cartRedux";
-import { useDispatch } from "react-redux";
+import { addProduct, createCart } from "../redux/cartRedux";
+import { useDispatch, useSelector } from "react-redux";
+import { addcarts } from "../redux/cartApiCalls";
 
 const Container = styled.div``;
 
@@ -121,16 +122,19 @@ const Button = styled.button`
   }
 `;
 
+
 const Product = () => {
   const location = useLocation();
   console.log(location.pathname)
   const id = location.pathname.split("/")[2];
   console.log(id)
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
+  const user=useSelector((state:any)=>state.user)
+  const { isFetching, error }:any = useSelector((state: any) => state.user);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -150,11 +154,34 @@ const Product = () => {
     }
   };
 
-  const handleClick = () => {
-    dispatch(
-      addProduct({ ...product, quantity, color, size })
-    );
+  const userId=user?.currentUser?._id
+  const accessToken=user?.currentUser?.accessToken
+
+  const cartData = {
+    userId: user?.currentUser?._id,
+    product: 
+      {
+        productId: id,
+        productName: product.title,
+        quantity: quantity,
+        color: color,
+        size: size,
+        price:product.price,
+        imgUrl: product.img
+      },
   };
+  
+  const handleClick = (e:any) => {
+    // e.preventDefault();
+    addcarts(dispatch, { cartData });
+    console.log(cartData)
+  };
+  // const handleClick = () => {
+  //   dispatch(
+  //     addcarts({ ...product, quantity, color, size , userId, accessToken})
+  //   );
+  // };
+
   return (
     <Container>
       <Navbar />

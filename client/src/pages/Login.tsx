@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { login } from "../redux/apiCalls";
+import { login } from "../redux/authApiCalls";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -57,7 +58,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Links = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -95,12 +96,10 @@ const Login = () => {
           <Button onClick={handleClick} disabled={isFetching}>
             LOGIN
           </Button>
-          {console.log(error)}
-          {console.log(isFetching)}
           
           {error && <Error>Something went wrong...</Error>}
-          <Link>Forgot Password?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Links>Forgot Password?</Links>
+          <Link to='/register' style={{textDecoration:"none", color:"black" }}><Links>CREATE A NEW ACCOUNT</Links></Link>
         </Form>
       </Wrapper>
     </Container>

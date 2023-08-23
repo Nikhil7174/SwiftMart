@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../apiRequest/index";
 import { Link, useNavigate } from "react-router-dom";
 
+
 const KEY = import.meta.env.VITE_REACT_APP_STRIPE || ''
 
 
@@ -160,31 +161,57 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
+
+
+
 const Cart = () => {
   let navigate = useNavigate();
-  const cart = useSelector((state:any) => state.cart);
+  const user = useSelector((state:any) => state.user);
+
   const [stripeToken, setStripeToken] = useState(null);
 
   const onToken = (token:any) => {
     setStripeToken(token);
   };
-  console.log(stripeToken)
 
+  const [cartItem, setCartItem] = useState([])
+useEffect(() => {
+  const getCart = async () => {
+    try {
+      const res = await userRequest.get(`/carts/find/${userId}`);
+      setCartItem(res.data);
+      console.log(res.data)
+    } catch {}
+  };
+  getCart();
+}, []);
+ 
+
+let price = 0;
+let sum = 0;
+{cartItem.map((product:any) => {
+   price = product.product.price * product.product.quantity;
+   sum += price;
+})}
+const sumWithShipping:number = sum+5.90-3.90
   useEffect(() => {
     const makeRequest = async () => {
       try {
         const res:any = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: cart.total,
+          amount: sumWithShipping,
         });
         navigate("/success", {
           stripeData: res.data,
-          products: cart, });
+          products: cartItem, });
       } catch  (error) {
         console.log(error.response.data);}
     };
     stripeToken && makeRequest();
-  }, [stripeToken, cart.total, navigate]);
+  }, [stripeToken, sum, navigate]);
+
+  const userId = user.currentUser._id;
+
 
   return (
     <Container>
@@ -202,31 +229,31 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            {cart.products.map((product:any) => (
+            {cartItem.map((product:any) => (
               <Product key={product._id}>
                 <ProductDetail>
-                  <Image src={product.img} />
+                  <Image src={product.product.imgUrl} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> {product.title}
+                      <b>Product:</b> {product.product.productName}
                     </ProductName>
                     <ProductId>
-                      <b>ID:</b> {product._id}
+                      <b>ID:</b> {product.product.productId}
                     </ProductId>
-                    <ProductColor color={product.color} />
+                    <ProductColor color={product.product.color} />
                     <ProductSize>
-                      <b>Size:</b> {product.size}
+                      <b>Size:</b> {product.product.size}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
                     <Add />
-                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <ProductAmount>{product.product.quantity}</ProductAmount>
                     <Remove />
                   </ProductAmountContainer>
                   <ProductPrice>
-                    $ {product.price * product.quantity}
+                    $ {product.product.price * product.product.quantity}
                   </ProductPrice>
                 </PriceDetail>
               </Product>
@@ -237,7 +264,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {sum}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -245,21 +272,21 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemPrice>$ -3.90</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {sumWithShipping}</SummaryItemPrice>
             </SummaryItem>
 
             <StripeCheckout
-              key={cart.id}
+              key={userId}
               name="SwiftMart"
               image="https://avatars.githubusercontent.com/u/1486366?v=4"
               billingAddress
               shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
+              description={`Your total is $${sumWithShipping}`}
+              amount={sumWithShipping * 100}
               token={onToken}
               stripeKey={KEY}
             >
