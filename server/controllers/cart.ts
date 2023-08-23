@@ -2,6 +2,17 @@ import Cart from '../models/Cart'
 import { Request,Response } from "express";
 
 export const createCart = async (req:Request, res:any) => {
+    // const newCart = new Cart({
+    //   userId:req.body.userId,
+
+    // products:[
+    //   {
+    //     productId:req.body.productId,
+    //     productName:req.body.productName,
+    //     quantity:req.body.quantity
+    //   }
+    //  ],
+    // })
     const newCart = new Cart(req.body);
   
     try {
@@ -9,6 +20,7 @@ export const createCart = async (req:Request, res:any) => {
       res.status(200).json(savedCart);
     } catch (err) {
       res.status(500).json(err);
+
     }
   }
 
@@ -38,10 +50,11 @@ export const deleteCart = async (req:any, res:any) => {
 
 export const getUserCart = async (req:any, res:any) => {
     try {
-      const cart = await Cart.findOne(req.params.id);
+      const cart = await Cart.find({ userId: req.params.id });
       res.status(200).json(cart);
     } catch (err) {
       res.status(500).json(err);
+      console.log(err)
     }
   }
 

@@ -5,7 +5,7 @@ import { createCart, deleteCart, getAllCart, getUserCart, updateCart } from "../
 const router: Router = express.Router()
 
 //CREATE
-router.post("/", verifyToken, createCart);
+router.post("/:id", verifyToken, createCart);
 
 //UPDATE
 router.put("/:id", verifyTokenAndAuthorization, updateCart);
