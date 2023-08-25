@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import TopBar from './components/topbar/TopBar'
 import SideBar from './components/sidebar/SideBar'
+import Home from './pages/home/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,7 +15,7 @@ function App() {
         <TopBar/>
         <div className='container'>
         <SideBar/>
-        <div className='others'>others</div>
+        <div className='others'><Home/></div>
       {/* <BrowserRouter>
         <Routes>
         
