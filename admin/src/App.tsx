@@ -5,6 +5,8 @@ import './App.css'
 import TopBar from './components/topbar/TopBar'
 import SideBar from './components/sidebar/SideBar'
 import Home from './pages/home/Home'
+import UserList from './pages/userList/UserList'
+import { BrowserRouter, Navigate, Route, Routes, redirect} from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,13 +17,16 @@ function App() {
         <TopBar/>
         <div className='container'>
         <SideBar/>
-        <div className='others'><Home/></div>
-      {/* <BrowserRouter>
+        
+        <div className='others'>
+      <BrowserRouter>
         <Routes>
         
-        <Route path="/success" element={<Success/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/users" element={<UserList/>}/>
       </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
+      </div>
       </div>
       </div>
     </>
