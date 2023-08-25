@@ -170,11 +170,11 @@ const Product = () => {
         imgUrl: product.img
       },
   };
-  
+
   const handleClick = (e:any) => {
-    // e.preventDefault();
+    e.preventDefault();
     addcarts(dispatch, { cartData });
-    console.log(cartData)
+    // console.log(cartData)
   };
   // const handleClick = () => {
   //   dispatch(

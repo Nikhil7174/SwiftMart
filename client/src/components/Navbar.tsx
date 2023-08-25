@@ -71,7 +71,7 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const Navbar = ({quantity}) => {
+const Navbar = () => {
   const dispatch:any = useDispatch();
   const quantity2 = useSelector((state:any)=>state.cart.quantity)
   const user = useSelector((state:any) => state.user);
@@ -95,7 +95,7 @@ const Navbar = ({quantity}) => {
     getCart();
   }, [userId]);
 
-  console.log(cartItem)
+  // console.log(cartItem)
 //   const carting = localStorage.getItem("persist:root",cart)
 // console.log(carting)
 
