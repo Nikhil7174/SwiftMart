@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/authApiCalls";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect,useState } from "react";
+import { userRequest } from "../apiRequest";
 
 const Container = styled.div`
   height: 60px;
@@ -69,11 +71,33 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const Navbar = () => {
+const Navbar = ({quantity}) => {
   const dispatch:any = useDispatch();
-  const quantity = useSelector((state:any)=>state.cart.quantity)
-  const user:any = useSelector((state:any) => state.user.currentUser);
+  const quantity2 = useSelector((state:any)=>state.cart.quantity)
+  const user = useSelector((state:any) => state.user);
   const navigate = useNavigate();
+
+  const cart2 = useSelector((state:any)=>state.cart)
+  console.log(cart2)
+  console.log(user)
+
+  const userId = user.currentUser?._id;
+  console.log(userId)
+  const [cartItem, setCartItem] = useState([])
+ 
+  useEffect(() => {
+    const getCart = async () => {
+      try {
+        const res = await userRequest.get(`/carts/find/${userId}`);
+        setCartItem(res.data);
+      } catch {}
+    };
+    getCart();
+  }, [userId]);
+
+  console.log(cartItem)
+//   const carting = localStorage.getItem("persist:root",cart)
+// console.log(carting)
 
   const handleLogout = (e:any) => {
     e.preventDefault();
@@ -94,12 +118,12 @@ const Navbar = () => {
         <Link to="/" style={{textDecoration:"none",color:"black"}}><Logo>SwiftMart.</Logo></Link>
         </Center>
         <Right>
-          {!user?(<><Link to="/register" style={{textDecoration:"none",color:"black"}}><MenuItem>REGISTER</MenuItem></Link>
+          {!userId?(<><Link to="/register" style={{textDecoration:"none",color:"black"}}><MenuItem>REGISTER</MenuItem></Link>
         <Link to="/login" style={{textDecoration:"none",color:"black"}}><MenuItem>SIGN IN</MenuItem></Link></>):(<><MenuItem onClick={handleLogout}>LOGOUT</MenuItem></>)}
         
           <Link to="/cart" style={{textDecoration:"none",color:"black"}}>
           <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
+            <Badge badgeContent={cartItem.length} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </MenuItem>

@@ -4,18 +4,23 @@ import { useSelector } from "react-redux";
 import { addProduct, createCart } from "./cartRedux";
 
 
-
 export const addcarts = async (dispatch: Dispatch, cart: any) => {
+
+
     console.log(cart)
     console.log(cart.cartData.userId)
+
     if (!cart.cartData.userId) {
       console.log("User not authenticated");
       return;
     }
+
+   
   
     const config = {
       headers: {
         Authorization: `Bearer ${cart.cartData.userId}`,
+        
       },
     };
   

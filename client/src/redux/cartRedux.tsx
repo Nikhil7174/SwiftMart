@@ -5,14 +5,17 @@ interface CartProduct {
 }
 
 interface CartState {
+  currentUserCart: object
   userId: string;
   products: string[];
   quantity: number;
   total: number;
   isFetching:boolean;
+  error:boolean;
 }
 
 const initialState: CartState = {
+  currentUserCart:[],
   userId:"",
   products: [],
   quantity: 0,
@@ -29,6 +32,8 @@ const cartSlice = createSlice({
       state.quantity += 1;
       state.products.push(action.payload);
       state.total += action.payload.price * action.payload.quantity;
+      state.currentUserCart = action.payload;
+      state.userId= action.payload.userId;
     },
     // createCart: (state, action: PayloadAction<any>) => {
     //   console.log(action.payload)
@@ -46,6 +51,7 @@ const cartSlice = createSlice({
     
       return {
         ...state,
+        // currentUserCart = action.payload;
         userId: newProduct.userId,
         quantity: state.quantity + 1,
         products: [...state.products, newProduct],
