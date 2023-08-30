@@ -35,7 +35,7 @@ function App() {
                   <Route path="/user" element={admin ? <User /> : <Login />} />
                   <Route path="/newUser" element={admin ? <NewUser /> : <Login />} />
                   <Route path="/productList" element={admin ? <ProductList /> : <Login />} />
-                  <Route path="/product" element={admin ? <Product /> : <Login />} />
+                  <Route path="/product/:productId" element={admin ? <Product /> : <Login />} />
                   <Route path="/newProduct" element={admin ? <NewProduct /> : <Login />} />
                 </Routes>
               </div>
@@ -46,7 +46,7 @@ function App() {
                   <Route path="/user" element={!admin ? <Navigate to="/login"/> : <User />} />
                   <Route path="/newUser" element={!admin ? <Navigate to="/login"/> : <NewUser />} />
                   <Route path="/productList" element={!admin ? <Navigate to="/login"/> : <ProductList />} />
-                  <Route path="/product" element={!admin ? <Navigate to="/login"/> : <Product />} />
+                  <Route path="/product/:productId" element={!admin ? <Navigate to="/login"/> : <Product />} />
                   <Route path="/newProduct" element={!admin ? <Navigate to="/login"/> : <NewProduct />} />
           </Routes>}
 
