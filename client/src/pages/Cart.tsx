@@ -197,6 +197,7 @@ const sumWithShipping:number = sum+5.90-3.90
   useEffect(() => {
     const makeRequest = async () => {
       try {
+        
         const res:any = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
           amount: sumWithShipping,
@@ -204,6 +205,14 @@ const sumWithShipping:number = sum+5.90-3.90
         navigate("/success", {
           stripeData: res.data,
           products: cartItem, });
+
+          await userRequest.post("/orders", {
+            userId:user?.currentUser?._id,
+            products:cartItem,
+            amount: sumWithShipping,
+            address: "INDIA",
+            status: "Successful",
+          });
       } catch  (error) {
         console.log(error.response.data);}
     };
