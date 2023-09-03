@@ -30,10 +30,12 @@ export default function Sidebar() {
             </li>
             </a>
             {/* </Link> */}
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
+            </a>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
               Sales
@@ -44,7 +46,7 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             {/* <Link to="/users" className="link"> */}
-            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
+            <a href="/user"  className="link" style={{color:"#646161", textDecoration:"none"}}>
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Users
@@ -53,21 +55,31 @@ export default function Sidebar() {
             {/* </Link> */}
 
             {/* <Link to="/products" className="link"> */}
-            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
+            <a href="/products"  className="link" style={{color:"#646161", textDecoration:"none"}}>
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Products
               </li>
               </a>
+              <a href="/newProduct"  className="link" style={{color:"#646161", textDecoration:"none"}}>
+              <li className="sidebarListItem">
+                <Storefront className="sidebarIcon" />
+                Add Products
+              </li>
+              </a>
             {/* </Link> */}
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
+            </a>
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
             </li>
+            </a>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -90,18 +102,24 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
+          <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <WorkOutline className="sidebarIcon" />
               Manage
             </li>
+            </a>
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
+            </a>
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <Report className="sidebarIcon" />
               Reports
             </li>
+            </a>
           </ul>
         </div>
       </div>
