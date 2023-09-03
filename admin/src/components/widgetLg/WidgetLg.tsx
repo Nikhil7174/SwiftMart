@@ -15,7 +15,7 @@ export default function WidgetLg() {
     };
     getOrders();
   }, []);
-  console.log(orders)
+  // console.log(orders)
   const Button = ({ type }:any) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };

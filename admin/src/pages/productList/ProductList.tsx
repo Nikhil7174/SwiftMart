@@ -1,3 +1,4 @@
+//@ts-nocheck
 import "./ProductList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";

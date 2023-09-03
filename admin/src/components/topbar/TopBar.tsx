@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import "./TopBar.css";
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";

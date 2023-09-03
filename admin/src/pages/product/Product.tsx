@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Link, useLocation } from "react-router-dom";
 import "./Product.css";
 import Chart from "../../components/chart/Chart";

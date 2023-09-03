@@ -1,12 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import TopBar from './components/topbar/TopBar'
 import SideBar from './components/sidebar/SideBar'
 import Home from './pages/home/Home'
-import UserList from './pages/userList/UserList'
-import { BrowserRouter, Navigate, Route, Routes, redirect } from "react-router-dom";
+// import UserList from './pages/userList/UserList'
+import { BrowserRouter, Navigate, Route, Routes, } from "react-router-dom";
 import User from './pages/user/User'
 import NewUser from './pages/newUser/NewUser'
 import ProductList from './pages/productList/ProductList'
@@ -22,8 +19,8 @@ function App() {
    admin = useSelector((state:any) => state.user.currentUser.isAdmin);
   }
 
-  console.log(admin)
-  console.log(user)
+  // console.log(admin)
+  // console.log(user)
   return (
     <>
       <div>
@@ -40,7 +37,8 @@ function App() {
                   <Route path="/login" element={admin ? <Navigate to="/" /> : <Login />} />
                   
                   {/* <Route path="/users" element={admin ? <Users/> : <Login />} /> */}
-                  <Route path="/user" element={admin ? <User /> : <Login />} />
+                  <Route path="/newUser" element={admin ? <User /> : <Login />} />
+                  {/* <Route path="/users" element={admin ? <UserList /> : <Login />} /> */}
                   <Route path="/newUser" element={admin ? <NewUser /> : <Login />} />
                   <Route path="/products" element={admin ? <ProductList /> : <Login />} />
                   <Route path="/product/:productId" element={admin ? <Product /> : <Login />} />
@@ -51,7 +49,7 @@ function App() {
             <Route path="/login" element={ <Login />} />
                   <Route path="/" element={!admin ? <Navigate to="/login"/> : <Home />} />
                   {/* <Route path="/users" element={!admin ? <Navigate to="/login"/> : <Users />} /> */}
-                  <Route path="/user" element={!admin ? <Navigate to="/login"/> : <User />} />
+                  {/* <Route path="/user" element={!admin ? <Navigate to="/login"/> : <User />} /> */}
                   <Route path="/newUser" element={!admin ? <Navigate to="/login"/> : <NewUser />} />
                   <Route path="/productList" element={!admin ? <Navigate to="/login"/> : <ProductList />} />
                   <Route path="/product/:productId" element={!admin ? <Navigate to="/login"/> : <Product />} />

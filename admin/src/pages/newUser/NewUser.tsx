@@ -1,3 +1,4 @@
+//@ts-nocheck
 import "./NewUser.css";
 
 export default function NewUser() {

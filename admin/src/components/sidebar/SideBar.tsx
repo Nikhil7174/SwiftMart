@@ -4,6 +4,7 @@ import {
   Timeline,
   TrendingUp,
   PermIdentity,
+  // PeopleAlt,
   Storefront,
   AttachMoney,
   BarChart,
@@ -12,8 +13,9 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
+  Store
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -36,20 +38,29 @@ export default function Sidebar() {
               Analytics
             </li>
             </a>
+            <a href="/"  className="link" style={{color:"#646161", textDecoration:"none"}}>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
               Sales
             </li>
+            </a>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             {/* <Link to="/users" className="link"> */}
-            <a href="/user"  className="link" style={{color:"#646161", textDecoration:"none"}}>
+            {/* <a href="/users"  className="link" style={{color:"#646161", textDecoration:"none"}}>
+              <li className="sidebarListItem">
+                <PeopleAlt className="sidebarIcon" />
+                Users
+              </li>
+              </a> */}
+
+              <a href="/newUser"  className="link" style={{color:"#646161", textDecoration:"none"}}>
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
-                Users
+                Add Users
               </li>
               </a>
             {/* </Link> */}
@@ -57,7 +68,7 @@ export default function Sidebar() {
             {/* <Link to="/products" className="link"> */}
             <a href="/products"  className="link" style={{color:"#646161", textDecoration:"none"}}>
               <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
+                <Store className="sidebarIcon" />
                 Products
               </li>
               </a>
