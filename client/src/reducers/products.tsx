@@ -1,7 +1,7 @@
-import { Product } from "../types/Products";
+import { ProductType } from "../types/Products";
 
 export type State = {
-  products: Product[];
+  products: ProductType[];
   loading: boolean;
   error: string;
 };
@@ -10,7 +10,7 @@ export type Action =
   | { type: "FETCH_REQUEST" }
   | {
       type: "FETCH_SUCCESS";
-      payload: Product[];
+      payload: ProductType[];
     }
   | { type: "FETCH_FAIL"; payload: string };
 

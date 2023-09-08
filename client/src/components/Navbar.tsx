@@ -73,7 +73,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const dispatch:any = useDispatch();
-  const quantity2 = useSelector((state:any)=>state.cart.quantity)
+  // const quantity2 = useSelector((state:any)=>state.cart.quantity)
   const user = useSelector((state:any) => state.user);
   const navigate = useNavigate();
 

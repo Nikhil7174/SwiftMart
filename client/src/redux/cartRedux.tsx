@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CartProduct {
-  // Define the type for your cart product here
-}
+// interface CartProduct {
+//   // Define the type for your cart product here
+// }
 
 interface CartState {
   currentUserCart: object

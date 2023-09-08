@@ -1,8 +1,7 @@
 import { Dispatch } from 'redux'; // Make sure to import the Dispatch type
 import { loginFailure, loginStart, loginSuccess, logoutSuccess, registerStart, registerSuccess, registerFailure } from './userRedux';
 // import { addProduct , createCart, addProductFailure,addProductStart,addProductSuccess} from './cartRedux';
-import { publicRequest, userRequest } from '../apiRequest/index';
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { publicRequest } from '../apiRequest/index';
 
 export const login = async (dispatch: Dispatch, user: any) => {
   dispatch(loginStart());

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { Category } from "../types/Products";
+// import { Category } from "../types/Products";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`

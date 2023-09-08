@@ -1,7 +1,6 @@
 import { userRequest } from "../apiRequest";
 import { Dispatch } from 'redux'; 
-import { useSelector } from "react-redux";
-import { addProduct, createCart } from "./cartRedux";
+import { addProduct } from "./cartRedux";
 
 
 export const addcarts = async (dispatch: Dispatch, cart: any) => {
