@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
-import { ProductType } from "../types/Products";
+// import { ProductType } from "../types/Products";
 
 const Container = styled.div`
   padding: 20px;
@@ -20,8 +20,8 @@ const Products = ({ cat, filters, sort }:any) => {
       try {
         const res = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products"
+            ? `https://swiftmart-api.onrender.com/api/products?category=${cat}`
+            : "https://swiftmart-api.onrender.com/api/products"
         );
         console.log(res.data)
         setProducts(res.data);
@@ -60,7 +60,7 @@ const Products = ({ cat, filters, sort }:any) => {
   return (
     <Container>
       {cat
-        ? filteredProducts.map((item:ProductType) => <Product item={item}  />)
+        ? filteredProducts.map((item:any) => <Product item={item}  />)
         : products
             .slice(0, 8)
             .map((item:any) => <Product item={item} key={item._id} />)}
