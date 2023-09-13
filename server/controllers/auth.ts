@@ -60,7 +60,7 @@ export const register = async (req:Request, res:Response) => {
             isAdmin: user.isAdmin,
         },
         JWT_SEC,
-            {expiresIn:"3d"}
+            {expiresIn:"3h"}
         );
   
         const { password, ...others } = user._doc;  

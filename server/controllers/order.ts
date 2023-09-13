@@ -6,10 +6,10 @@ export const createOrder = async (req:Request, res:any) => {
     try {
         
       const savedOrder = await newOrder.save();
-      res.send(req.body)
-      res.status(200).json(savedOrder);
+      // res.send(req.body)
+      return res.status(200).json(savedOrder);
     } catch (err) {
-      res.status(500).json(err);
+      return res.status(500).json(err);
     }
   }
 
@@ -50,6 +50,7 @@ export const getAllOrders = async (req:Request, res:any) => {
     try {
       const orders = await Order.find();
       res.status(200).json(orders);
+      console.log(orders);
     } catch (err) {
       res.status(500).json(err);
     }

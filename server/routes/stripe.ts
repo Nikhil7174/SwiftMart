@@ -17,8 +17,6 @@ const createSource = async (tokenId: string) => {
 
 router.post("/payment", async (req: Request, res: Response) => {
   const tokenId = req.body.tokenId; // Use the correct field name for the source ID
-  console.log(req.body.amount)
-  console.log(req.body)
 
 
   try {
